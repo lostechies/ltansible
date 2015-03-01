@@ -1,0 +1,20 @@
+---                                                                                
+- name: make sure python-apt is installed so ansible can install things
+  sudo: yes
+  action: shell apt-get install python-apt-common -y
+    
+- name: remove password prompt for sudo
+  sudo: yes
+  lineinfile: "dest=/etc/sudoers state=present line='%lostechies ALL=(ALL) NOPASSWD: ALL'"
+
+- name: install packages                                                       
+  sudo: yes                                                                    
+  apt: pkg={{ item }} state=latest update_cache=yes                              
+  with_items:                                                                  
+    - build-essential
+    - software-properties-common                                               
+    - tmux                                                                     
+    - vim                                                                      
+    - cmake                                                                    
+    - curl                                                                     
+    - wget                                                                     

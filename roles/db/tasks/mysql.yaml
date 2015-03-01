@@ -1,0 +1,14 @@
+---
+- name: create database
+  mysql_db: name=wordpress state=present
+
+- name: get backup of database
+  command: wget url_to_backup /tmp/wordpress.sql.bz2
+
+- name: restore backup of database
+  mysql_db: name=wordpress state=import target=/tmp/wordpress.sql.bz2
+
+- name: set my.cnf
+  sudo: yes
+  copy: src=my.cnf dest=/etc/mysql/my.cnf owner=root group=root mode=0644
+

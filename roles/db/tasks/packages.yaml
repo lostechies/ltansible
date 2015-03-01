@@ -1,0 +1,11 @@
+---
+- name: add git-core ppa                                                       
+  sudo: yes                                                                    
+  apt_repository: repo='ppa:git-core/ppa' state=present                        
+                                                                               
+- name: install packages                                                       
+  sudo: yes                                                                    
+  apt: pkg={{ item }} state=latest update_cache=yes                              
+  with_items:                                                                  
+    - git
+    - mysql-server

@@ -1,0 +1,15 @@
+---
+- name: setup wordpress directory
+  file: path=/var/www/apps/wordpress state=directory
+        owner=wordpress group=www-data
+
+- name: get wordpress repo
+  git: repo:https://github.com/lostechies/wordpress.git dest=/var/www/apps/wordpress
+
+- name: set wp-config.php
+  template: src=wp-config.php.j2 dest=wp-config.php
+            owner=wordpress group=www-data
+
+- name: set wp-settings.php
+  template: src=wp-settings.php.j2 dest=wp-settings.php
+            owner=wordpress group=www-data

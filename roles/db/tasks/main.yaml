@@ -1,0 +1,16 @@
+---                                                                                
+- include: users.yaml
+  tags: users
+
+- include: packages.yaml
+  tags: packages
+
+- include: mysql.yaml
+  tags: mysql
+
+- include: iptables.yaml
+  tags: iptables
+
+- include: ssh.yaml
+  tags: ssh
+

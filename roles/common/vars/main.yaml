@@ -1,0 +1,4 @@
+---
+wordpress_database: db_name
+wordpress_database_user: db_user
+wordpress_database_password: db_password

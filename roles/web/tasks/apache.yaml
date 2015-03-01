@@ -1,0 +1,23 @@
+---
+- name: set servername.conf
+  sudo: yes
+  copy: src=servername.conf dest=/etc/apache2/conf.d/servername.conf
+  notify: restart apache
+
+- name: set apache2.conf
+  sudo: yes
+  copy: src=apache2.conf dest=/etc/apache2/apache2.conf
+  notify: restart apache
+
+- name: enable rewrite module
+  sudo: yes
+  command: a2endmod rewrite
+
+- name: copy lostechies site conf
+  sudo: yes
+  copy: src=lostechies.conf dest=/etc/apache2/sites-available/lostechies.conf
+
+- name: set lostechies as enabled site
+  sudo: yes
+  copy: a2ensite lostechies
+  notify: restart apache

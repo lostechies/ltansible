@@ -1,0 +1,9 @@
+---                                                                                
+- hosts: webservers
+  roles:
+    - common
+    - { role: wordpress, gist_username: gist_user,
+                         gist_password: gist_password,
+                         wpcom_api_key: 12345,
+                         wordpress_database_host_ip: 1.1.1.1 }
+    - { role: web, ssh_port: 22 }
