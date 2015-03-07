@@ -5,8 +5,12 @@
 - include: packages.yaml
   tags: packages
 
-- include: mysql.yaml
-  tags: mysql
+# IN PROGRESS      
+#- include: mysql.yaml
+#  tags: mysql
+
+- include: python.yaml
+  tags: python
 
 - include: iptables.yaml
   tags: iptables

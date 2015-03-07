@@ -1,0 +1,19 @@
+---
+- name: install packages
+  sudo: yes
+  apt: pkg={{ item }} state=latest update_cache=yes
+  with_items:
+    - python-software-properties
+    - python-dev
+
+- name: get pip installation file
+  sudo: yes
+  get_url: url=https://bootstrap.pypa.io/get-pip.py dest=~/ validate_certs=no
+
+- name: install pip
+  sudo: yes
+  command: python ~/get-pip.py
+
+- name: install pyrax
+  sudo: yes
+  command: pip install pyrax
